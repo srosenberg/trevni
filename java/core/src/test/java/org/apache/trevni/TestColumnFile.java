@@ -50,8 +50,11 @@ public class TestColumnFile {
 
   @Parameters public static Collection<Object[]> codecs() {
     Object[][] data = new Object[][] {{"null", "null"},
+    		                          {"null", "crc32"},
                                       {"snappy", "crc32"},
-                                      {"deflate", "crc32"}};
+                                      {"snappy", "null"},
+                                      {"deflate", "crc32"},
+                                      {"deflate", "null"}};
     return Arrays.asList(data);
   }
 
