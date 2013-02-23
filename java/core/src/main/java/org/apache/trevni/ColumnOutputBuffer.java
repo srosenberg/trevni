@@ -73,6 +73,7 @@ class ColumnOutputBuffer {
   private void flushBuffer() throws IOException {
     if (rowCount == 0) return;
     ByteBuffer raw = buffer.asByteBuffer();
+    ByteBuffer checksumBuf = checksum.compute(raw);
     ByteBuffer c = codec.compress(raw);
 
     blockDescriptors.add(new BlockDescriptor(rowCount,
@@ -81,7 +82,7 @@ class ColumnOutputBuffer {
 
     ByteBuffer data = ByteBuffer.allocate(c.remaining() + checksum.size());
     data.put(c);
-    data.put(checksum.compute(raw));
+    data.put(checksumBuf);
     blockData.add(data.array());
 
     int sizeIncrement =
