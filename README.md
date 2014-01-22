@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/srosenberg/trevni.png?branch=master)](https://travis-ci.org/srosenberg/trevni)
+
 Trevni is now included in Apache Avro.
 
 The Trevni specification is published at:
